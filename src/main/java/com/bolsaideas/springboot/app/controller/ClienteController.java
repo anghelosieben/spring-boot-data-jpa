@@ -40,6 +40,7 @@ public class ClienteController {
 		model.put("titulo", "Formulario de Cliente");
 		Cliente cliente=new Cliente();
 		model.put("cliente", cliente);
+		model.put("button", "Crear Cliente");
 		return "form";
 	}
 	@PostMapping("form")
@@ -48,6 +49,7 @@ public class ClienteController {
 			
 			return "form";//sin redirect
 		}
+		log.info("cliente: "+cliente);
 		log.info("cliente: "+cliente);
 		clienteService.save(cliente);
 		return "redirect:listar";
@@ -67,6 +69,7 @@ public class ClienteController {
 			return "redirect:/clientes/listar";
 		model.put("titulo", "Editar Cliente");		
 		model.put("cliente", cliente);
+		model.put("button", "Editar Cliente");
 		return "form";
 	}
 	@GetMapping("delete/{id}")
